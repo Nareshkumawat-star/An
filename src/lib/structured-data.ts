@@ -32,7 +32,7 @@ export function generatePersonStructuredData() {
       `https://linkedin.com/in/${selfData.socials_username.linkedin}`,
       `https://leetcode.com/${selfData.socials_username.leetcode}`,
     ],
-    url: "https://naresh-portfolio.vercel.app", // Updated to follow current context
+    url: "https://nareshkumawat.vercel.app", // Updated to follow current context
     description: selfData.bio,
     knowsAbout: skills,
   };
@@ -43,7 +43,7 @@ export function generateWebsiteStructuredData() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: `${selfData.name} - Portfolio`,
-    url: "https://naresh-portfolio.vercel.app",
+    url: "https://nareshkumawat.vercel.app",
     description:
       `${selfData.name}'s portfolio featuring projects in React, Next.js, and modern web development`,
     author: {
@@ -68,8 +68,8 @@ export function generateOrganizationStructuredData() {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: selfData.name,
-    url: "https://naresh-portfolio.vercel.app",
-    logo: "https://naresh-portfolio.vercel.app/images/logo.png",
+    url: "https://nareshkumawat.vercel.app",
+    logo: "https://nareshkumawat.vercel.app/images/logo.png",
     description: selfData.bio,
     founder: {
       "@type": "Person",
@@ -90,7 +90,7 @@ export function generateResumeStructuredData() {
     name: `${selfData.name} Resume`,
     description:
       `Professional resume of ${selfData.name} - Software Developer specializing in Full-Stack Web Development`,
-    url: "https://naresh-portfolio.vercel.app/resume",
+    url: "https://nareshkumawat.vercel.app/resume",
     author: {
       "@type": "Person",
       name: selfData.name,
@@ -114,8 +114,8 @@ export function generateResumeStructuredData() {
     },
     dateModified: new Date().toISOString(),
     fileFormat: "application/pdf",
-    contentUrl: "https://naresh-portfolio.vercel.app/docs/Naresh_Kumawat_Resume.pdf",
-    downloadUrl: "https://naresh-portfolio.vercel.app/docs/Naresh_Kumawat_Resume.pdf",
+    contentUrl: "https://nareshkumawat.vercel.app/docs/Naresh_Kumawat_Resume.pdf",
+    downloadUrl: "https://nareshkumawat.vercel.app/docs/Naresh_Kumawat_Resume.pdf",
     keywords: [
       "Software Developer",
       "Full Stack Developer",

@@ -117,7 +117,7 @@ export default function Resume() {
               whileTap={{ scale: 0.95 }}
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 1.1 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
             >
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700 pointer-events-none" />
                 <HiOutlineArrowsExpand className="w-4 h-4 text-secondary relative z-10 pointer-events-none" />
@@ -138,7 +138,7 @@ export default function Resume() {
                 whileTap={{ scale: 0.95 }}
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 1.2 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
               >
                 <HiExternalLink className="w-4 h-4 text-secondary pointer-events-none" />
                 <span className="text-foreground font-medium pointer-events-none">
@@ -163,7 +163,7 @@ export default function Resume() {
                 whileTap={{ scale: 0.95 }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 1.3 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700 pointer-events-none" />
                 <HiDownload className="w-4 h-4 relative z-10 pointer-events-none" />
@@ -178,7 +178,7 @@ export default function Resume() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{
               duration: 1,
-              delay: 1.4,
+              delay: 0.4,
               ease: [0.25, 0.46, 0.45, 0.94],
             }}
             whileHover={{
@@ -196,7 +196,7 @@ export default function Resume() {
                 style={{ height: "800px" }}
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, delay: 1.6 }}
+                transition={{ duration: 0.8, delay: 0.5 }}
               >
                 <div className="pdf-viewer">
                   <div
