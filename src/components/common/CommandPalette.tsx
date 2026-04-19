@@ -97,7 +97,7 @@ export const CommandPalette = () => {
               <div className="max-h-[60vh] overflow-y-auto custom-scrollbar p-2">
                 {filteredActions.length === 0 ? (
                   <div className="p-12 text-center">
-                    <p className="text-sm text-gray-400">No results found for "{search}"</p>
+                    <p className="text-sm text-gray-400">No results found for &quot;{search}&quot;</p>
                   </div>
                 ) : (
                   Object.entries(

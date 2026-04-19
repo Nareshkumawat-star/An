@@ -30,10 +30,9 @@ export function generatePersonStructuredData() {
     sameAs: [
       `https://github.com/${selfData.socials_username.github}`,
       `https://linkedin.com/in/${selfData.socials_username.linkedin}`,
-      `https://twitter.com/${selfData.socials_username.twitter}`,
-      `https://instagram.com/${selfData.socials_username.instagram}`,
+      `https://leetcode.com/${selfData.socials_username.leetcode}`,
     ],
-    url: "https://aarab.vercel.app",
+    url: "https://naresh-portfolio.vercel.app", // Updated to follow current context
     description: selfData.bio,
     knowsAbout: skills,
   };
@@ -43,10 +42,10 @@ export function generateWebsiteStructuredData() {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "Aarab Nishchal - Portfolio",
-    url: "https://aarab.vercel.app",
+    name: `${selfData.name} - Portfolio`,
+    url: "https://naresh-portfolio.vercel.app",
     description:
-      "Aarab Nishchal's portfolio featuring projects in React, Next.js, and modern web development",
+      `${selfData.name}'s portfolio featuring projects in React, Next.js, and modern web development`,
     author: {
       "@type": "Person",
       name: selfData.name,
@@ -69,8 +68,8 @@ export function generateOrganizationStructuredData() {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: selfData.name,
-    url: "https://aarab.vercel.app",
-    logo: "https://aarab.vercel.app/images/logo.png",
+    url: "https://naresh-portfolio.vercel.app",
+    logo: "https://naresh-portfolio.vercel.app/images/logo.png",
     description: selfData.bio,
     founder: {
       "@type": "Person",
@@ -79,8 +78,7 @@ export function generateOrganizationStructuredData() {
     sameAs: [
       `https://github.com/${selfData.socials_username.github}`,
       `https://linkedin.com/in/${selfData.socials_username.linkedin}`,
-      `https://twitter.com/${selfData.socials_username.twitter}`,
-      `https://instagram.com/${selfData.socials_username.instagram}`,
+      `https://leetcode.com/${selfData.socials_username.leetcode}`,
     ],
   };
 }
@@ -89,10 +87,10 @@ export function generateResumeStructuredData() {
   return {
     "@context": "https://schema.org",
     "@type": "DigitalDocument",
-    name: "Aarab Nishchal Resume",
+    name: `${selfData.name} Resume`,
     description:
-      "Professional resume of Aarab Nishchal - Student Developer specializing in Full-Stack Web Development",
-    url: "https://aarab.vercel.app/resume",
+      `Professional resume of ${selfData.name} - Software Developer specializing in Full-Stack Web Development`,
+    url: "https://naresh-portfolio.vercel.app/resume",
     author: {
       "@type": "Person",
       name: selfData.name,
@@ -111,12 +109,13 @@ export function generateResumeStructuredData() {
       sameAs: [
         `https://github.com/${selfData.socials_username.github}`,
         `https://linkedin.com/in/${selfData.socials_username.linkedin}`,
+        `https://leetcode.com/${selfData.socials_username.leetcode}`,
       ],
     },
     dateModified: new Date().toISOString(),
     fileFormat: "application/pdf",
-    contentUrl: "https://aarab.vercel.app/docs/MyResume.pdf",
-    downloadUrl: "https://aarab.vercel.app/docs/MyResume.pdf",
+    contentUrl: "https://naresh-portfolio.vercel.app/docs/Naresh_Kumawat_Resume.pdf",
+    downloadUrl: "https://naresh-portfolio.vercel.app/docs/Naresh_Kumawat_Resume.pdf",
     keywords: [
       "Software Developer",
       "Full Stack Developer",
@@ -124,10 +123,9 @@ export function generateResumeStructuredData() {
       "Next.js Developer",
       "JavaScript Developer",
       "TypeScript Developer",
-      "Student Developer",
       "Computer Science",
-      "KIIT University",
-      "Bhubaneswar",
+      "Jaipur",
+      "Rajasthan",
       "India",
     ],
   };

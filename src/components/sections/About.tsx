@@ -92,7 +92,7 @@ export const About = () => {
                 transition={{ duration: 0.8, delay: 0.3 }}
               >
                 About Me
-                <motion.div 
+                <motion.div
                   className="h-1 bg-gradient-to-r from-primary to-transparent mt-4 w-32"
                   initial={{ width: 0, opacity: 0 }}
                   whileInView={{ width: 128, opacity: 1 }}

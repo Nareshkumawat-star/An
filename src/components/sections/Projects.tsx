@@ -34,7 +34,7 @@ export const Projects = () => {
             transition={{ duration: 0.8 }}
           >
             My Projects
-            <motion.div 
+            <motion.div
               className="h-1 bg-gradient-to-r from-transparent via-secondary to-transparent mt-6 mx-auto"
               initial={{ width: 0, opacity: 0 }}
               whileInView={{ width: 280, opacity: 1 }}

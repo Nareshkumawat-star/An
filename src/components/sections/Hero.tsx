@@ -9,11 +9,10 @@ import { selfData } from "@/constant";
 
 import { quentine, mono } from "@/app/fonts";
 
-import { CodeTerminal } from "@/components/common/CodeTerminal";
+import { CodeTerminal, Magnetic } from "@/components/common";
 
 export const Hero = () => {
   const ref = useRef(null);
-
 
   return (
     <section
@@ -73,15 +72,19 @@ export const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.8 }}
             >
-              <Button
-                asChild
-                size="lg"
-                className="relative group overflow-hidden btn-primary shadow-lg hover:shadow-xl px-10 h-14"
-              >
-                <Link href="/resume">
-                  <span className="relative z-10 font-bold tracking-wide">View Resume</span>
-                </Link>
-              </Button>
+              <Magnetic>
+                <Button
+                  asChild
+                  size="lg"
+                  className="relative group overflow-hidden btn-primary shadow-lg hover:shadow-xl px-10 h-14"
+                >
+                  <Link href="/resume">
+                    <span className="relative z-10 font-bold tracking-wide">
+                      View Resume
+                    </span>
+                  </Link>
+                </Button>
+              </Magnetic>
             </motion.div>
           </motion.div>
 
@@ -92,7 +95,5 @@ export const Hero = () => {
         </div>
       </div>
     </section>
-
   );
 };
-
