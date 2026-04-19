@@ -14,6 +14,7 @@ import { quentine } from "@/app/fonts";
 import { Button } from "../ui/button";
 import { createBlurDataURL } from "@/lib/BlurDataURL";
 import { selfData } from "@/constant";
+import { Magnetic } from "./Magnetic";
 
 export const Navbar = () => {
   const [isVisible, setIsVisible] = useState(true);
@@ -62,51 +63,55 @@ export const Navbar = () => {
         }`}
       >
         <div className="flex items-center justify-between">
-          <Link
-            href="/"
-            className="flex items-center space-x-2 sm:space-x-3 group"
-          >
-            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-glass-bg flex items-center justify-center group-hover:scale-105 transition-transform duration-200">
-              <Image
-                src="/images/logo.svg"
-                alt="logo"
-                width={40}
-                height={40}
-                placeholder="blur"
-                loading="lazy"
-                quality={100}
-                blurDataURL={`${createBlurDataURL({
-                  width: 40,
-                  height: 40,
-                })}`}
-                style={{
-                  objectFit: "cover",
-                }}
-              />
-            </div>
-            <span
-              className={`${quentine.className} text-primary-foreground text-xl sm:text-base`}
+          <Magnetic amount={0.15}>
+            <Link
+              href="/"
+              className="flex items-center space-x-2 sm:space-x-3 group"
             >
-              {selfData.name}
-            </span>
-          </Link>
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-glass-bg flex items-center justify-center group-hover:scale-105 transition-transform duration-200">
+                <Image
+                  src="/images/logo.svg"
+                  alt="logo"
+                  width={40}
+                  height={40}
+                  placeholder="blur"
+                  loading="lazy"
+                  quality={100}
+                  blurDataURL={`${createBlurDataURL({
+                    width: 40,
+                    height: 40,
+                  })}`}
+                  style={{
+                    objectFit: "cover",
+                  }}
+                />
+              </div>
+              <span
+                className={`${quentine.className} text-primary-foreground text-xl sm:text-base`}
+              >
+                {selfData.name}
+              </span>
+            </Link>
+          </Magnetic>
 
           <div className="hidden sm:block">
-            <Button
-              variant="outline"
-              asChild
-              className="border-primary/30 hover:border-primary hover:bg-primary/10 transition-all duration-200"
-            >
-              {isResumePage ? (
-                <a href="/docs/Naresh_Kumawat_Resume.pdf" download="Naresh_Kumawat_Resume.pdf">
-                  Download Resume
-                </a>
-              ) : (
-                <Link href="/resume">
-                  Resume
-                </Link>
-              )}
-            </Button>
+            <Magnetic amount={0.2}>
+              <Button
+                variant="outline"
+                asChild
+                className="border-primary/30 hover:border-primary hover:bg-primary/10 transition-all duration-200"
+              >
+                {isResumePage ? (
+                  <a href="/docs/Naresh_Kumawat_Resume.pdf" download="Naresh_Kumawat_Resume.pdf">
+                    Download Resume
+                  </a>
+                ) : (
+                  <Link href="/resume">
+                    Resume
+                  </Link>
+                )}
+              </Button>
+            </Magnetic>
           </div>
 
           <button

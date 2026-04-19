@@ -13,6 +13,7 @@ import { quentine } from "@/app/fonts";
 import { selfData } from "@/constant/";
 import spaceImg from "@/assets/images/space.png";
 import { LiveMetadata } from "./LiveMetadata";
+import { Magnetic } from "./Magnetic";
 
 const floatingParticles = [
   { x: 200, y: 80, color: "hsl(var(--primary))", duration: 7, delay: 0 },
@@ -108,14 +109,15 @@ export const Footer = () => {
 
           <div className="flex items-center space-x-3">
             {socialLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                aria-label={link.label}
-                className="w-8 h-8 flex items-center justify-center rounded-lg border border-primary/30 bg-card/50 hover:bg-primary/20 hover:text-primary text-muted-foreground transition-all duration-300 hover:scale-110 shadow-lg glow-on-hover"
-              >
-                <link.icon size={16} />
-              </a>
+              <Magnetic key={link.label} amount={0.2}>
+                <a
+                  href={link.href}
+                  aria-label={link.label}
+                  className="w-10 h-10 flex items-center justify-center rounded-lg border border-primary/30 bg-card/50 hover:bg-primary/20 hover:text-primary text-muted-foreground transition-all duration-300 shadow-lg glow-on-hover"
+                >
+                  <link.icon size={18} />
+                </a>
+              </Magnetic>
             ))}
           </div>
         </div>

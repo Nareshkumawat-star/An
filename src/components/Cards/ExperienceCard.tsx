@@ -77,12 +77,15 @@ export const ExperienceCard: FC<ExperienceCardProps> = ({
             borderColor: "hsl(var(--glass-border))",
           }}
         >
-          {/* Glass shimmer effect */}
+          {/* Luxury Light Sweep effect */}
           <motion.div
-            className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-500"
-            style={{ background: "var(--shimmer)" }}
+            className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+            style={{
+              background: "linear-gradient(110deg, transparent 40%, rgba(255, 126, 95, 0.2) 45%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 126, 95, 0.2) 55%, transparent 60%)",
+              backgroundSize: "200% 100%",
+            }}
             initial={{ x: "-100%" }}
-            whileHover={{ x: "200%" }}
+            whileHover={{ x: "100%" }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
           />
 
