@@ -8,9 +8,7 @@ body {
   @apply m-0 p-0 box-border;
 }
 
-*::-webkit-scrollbar {
-  display: none;
-}
+/* Custom scrollbar styling is handled in the @layer base below */
 
 @layer base {
   :root {

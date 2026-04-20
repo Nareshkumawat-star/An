@@ -8,6 +8,7 @@ import { CustomCursor } from "./CustomCursor";
 import { CodeTerminal } from "./CodeTerminal";
 import { CommandPalette } from "./CommandPalette";
 import { ScrollProgress } from "./ScrollProgress";
+import { LiveMetadata } from "./LiveMetadata";
 
 export {
   Navbar,

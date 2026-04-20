@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import { FC, useRef } from "react";
 import { motion, useInView } from "motion/react";
@@ -25,16 +26,26 @@ export const ProjectCard: FC<ProjectCardProps> = ({
   demo,
   tech,
 }) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(cardRef, {
     once: false,
     margin: "-50px",
     amount: 0.2,
   });
 
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    cardRef.current.style.setProperty("--mouse-x", `${x}%`);
+    cardRef.current.style.setProperty("--mouse-y", `${y}%`);
+  };
+
   return (
     <motion.div
-      ref={ref}
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
       key={title}
       initial={{ opacity: 0, y: 40, scale: 0.95 }}
       animate={
@@ -67,16 +78,30 @@ export const ProjectCard: FC<ProjectCardProps> = ({
           borderRadius: "1rem",
         }}
       >
-        {/* Luxury Light Sweep effect */}
+        {/* Holographic Shimmer effect */}
         <motion.div
-          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-20"
           style={{
-            background: "linear-gradient(110deg, transparent 40%, rgba(255, 126, 95, 0.2) 45%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 126, 95, 0.2) 55%, transparent 60%)",
-            backgroundSize: "200% 100%",
+            background: "linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.05) 45%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.05) 55%, transparent 100%)",
+            backgroundSize: "250% 250%",
+            mixBlendMode: "overlay",
           }}
-          initial={{ x: "-100%" }}
-          whileHover={{ x: "100%" }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
+          animate={{
+            backgroundPosition: ["0% 0%", "100% 100%"],
+          }}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+        />
+
+        {/* Dynamic Holographic Glow */}
+        <motion.div
+          className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-40 transition-opacity duration-500 z-10"
+          style={{
+            background: "radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(139, 92, 246, 0.3) 0%, transparent 70%)",
+          }}
         />
 
         {/* Glowing border effect */}
@@ -84,7 +109,7 @@ export const ProjectCard: FC<ProjectCardProps> = ({
           className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"
           style={{
             background:
-              "linear-gradient(45deg, hsl(var(--primary) / 0.2), hsl(var(--secondary) / 0.2), hsl(var(--accent) / 0.2))",
+              "linear-gradient(45deg, hsl(var(--primary) / 0.3), hsl(var(--secondary) / 0.2), hsl(var(--accent) / 0.3))",
             filter: "blur(1px)",
           }}
         />

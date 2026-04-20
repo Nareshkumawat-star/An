@@ -53,14 +53,12 @@ export const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-4 left-0 right-0 z-50 transition-all duration-300 ease-out ${
-        isScrolled ? "pt-0 px-2 sm:px-4" : "px-2 sm:px-2"
-      } ${isVisible ? "translate-y-0" : "-translate-y-full"}`}
+      className={`fixed top-4 left-0 right-0 z-50 transition-all duration-300 ease-out ${isScrolled ? "pt-0 px-2 sm:px-4" : "px-2 sm:px-2"
+        } ${isVisible ? "translate-y-0" : "-translate-y-full"}`}
     >
       <div
-        className={`floating-nav rounded-2xl px-4 sm:px-6 py-3 bg-glass-bg transition-all duration-300 max-w-7xl mx-auto ${
-          isScrolled ? "shadow-xl" : "shadow-lg"
-        }`}
+        className={`floating-nav rounded-2xl px-4 sm:px-6 py-3 bg-glass-bg transition-all duration-300 max-w-7xl mx-auto ${isScrolled ? "shadow-xl" : "shadow-lg"
+          }`}
       >
         <div className="flex items-center justify-between">
           <Magnetic amount={0.15}>
@@ -135,9 +133,8 @@ export const Navbar = () => {
 
         {/* Mobile Menu */}
         <div
-          className={`sm:hidden overflow-hidden transition-all duration-300 ease-out ${
-            isMenuOpen ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
-          }`}
+          className={`sm:hidden overflow-hidden transition-all duration-300 ease-out ${isMenuOpen ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
+            }`}
         >
           <div className="pt-4 pb-2 border-t border-border/50 mt-4">
             <div className="space-y-3">
