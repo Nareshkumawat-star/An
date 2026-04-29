@@ -28,7 +28,7 @@ export const About = () => {
             className="flex justify-center md:justify-start"
             initial={{ opacity: 0, x: -60 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false, margin: "-100px" }}
             transition={{
               duration: 0.7,
               ease: [0.25, 0.46, 0.45, 0.94],
@@ -77,7 +77,7 @@ export const About = () => {
             className="space-y-8"
             initial={{ opacity: 0, x: 60 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false, margin: "-100px" }}
             transition={{
               duration: 0.7,
               delay: 0.2,

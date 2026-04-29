@@ -15,8 +15,8 @@ const codeSnippet = `const developer = {
 };`;
 
 export const CodeTerminal = () => {
-  const [displayedCode, setDisplayedCode] = useState("");
-  const [index, setIndex] = useState(0);
+  const [displayedCode] = useState(codeSnippet);
+  const [index] = useState(codeSnippet.length);
 
   // 3D Tilt Logic
   const x = useMotionValue(0);
@@ -45,15 +45,7 @@ export const CodeTerminal = () => {
     y.set(0);
   };
 
-  useEffect(() => {
-    if (index < codeSnippet.length) {
-      const timeout = setTimeout(() => {
-        setDisplayedCode((prev) => prev + codeSnippet[index]);
-        setIndex((prev) => prev + 1);
-      }, 25);
-      return () => clearTimeout(timeout);
-    }
-  }, [index]);
+  // Typing effect removed for "immediate" display as requested
 
   // Simple Manual Syntax Highlighting
   const renderHighlightedCode = (code: string) => {
