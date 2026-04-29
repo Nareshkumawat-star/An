@@ -17,7 +17,7 @@ export const Hero = () => {
   return (
     <section
       ref={ref}
-      className="min-h-screen flex items-center justify-start px-6 relative overflow-hidden"
+      className="min-h-screen flex items-center justify-start px-6 relative overflow-hidden gpu-accelerated will-change-transform"
     >
       <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent pointer-events-none" />
 

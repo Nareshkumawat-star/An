@@ -57,7 +57,7 @@ export const Navbar = () => {
         } ${isVisible ? "translate-y-0" : "-translate-y-full"}`}
     >
       <div
-        className={`floating-nav rounded-2xl px-5 sm:px-6 py-3.5 sm:py-3 bg-glass-bg transition-all duration-300 max-w-7xl mx-auto ${isScrolled ? "shadow-xl" : "shadow-lg"
+        className={`floating-nav rounded-2xl px-5 sm:px-6 py-3.5 sm:py-3 bg-glass-bg transition-all duration-300 max-w-7xl mx-auto gpu-accelerated will-change-transform ${isScrolled ? "shadow-xl" : "shadow-lg"
           }`}
       >
         <div className="flex items-center justify-between">
