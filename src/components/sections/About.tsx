@@ -27,7 +27,8 @@ export const About = () => {
           <motion.div
             className="flex justify-center md:justify-start"
             initial={{ opacity: 0, x: -60 }}
-            animate={{ opacity: 1, x: 0 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
             transition={{
               duration: 0.7,
               ease: [0.25, 0.46, 0.45, 0.94],
@@ -75,7 +76,8 @@ export const About = () => {
           <motion.div
             className="space-y-8"
             initial={{ opacity: 0, x: 60 }}
-            animate={{ opacity: 1, x: 0 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
             transition={{
               duration: 0.7,
               delay: 0.2,
@@ -106,8 +108,9 @@ export const About = () => {
               className="space-y-6 leading-relaxed"
               style={{ color: "hsl(var(--foreground) / 0.8)" }}
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
             >
               {selfData.about.map((paragraph, index) => (
                 <motion.p

@@ -43,10 +43,11 @@ export function Experience() {
           </motion.h2>
 
           <motion.p
-            className="text-xs text-muted-foreground max-w-2xl mx-auto mt-4"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+          className="text-xs text-muted-foreground max-w-2xl mx-auto mt-4"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
           >
             My professional journey and key experiences
           </motion.p>
@@ -58,7 +59,8 @@ export function Experience() {
           <motion.div
             className="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-primary/50 via-secondary/30 to-transparent"
             initial={{ scaleY: 0, originY: 0 }}
-            animate={{ scaleY: 1 }}
+            whileInView={{ scaleY: 1 }}
+            viewport={{ once: true }}
             transition={{ duration: 1.5, delay: 0.5 }}
           />
 

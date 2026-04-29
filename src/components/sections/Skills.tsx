@@ -51,7 +51,7 @@ const Marquee: FC<MarqueeProps> = ({ skills, direction }) => {
       <div className="relative overflow-hidden py-2 w-full">
         <motion.div
           ref={marqueeRef}
-          className="flex flex-row gap-4 sm:gap-8 whitespace-nowrap w-max"
+          className="flex flex-row gap-4 sm:gap-8 whitespace-nowrap w-max will-change-transform gpu-accelerated"
           animate={marqueeWidth > 0 ? { x: animateX } : {}}
           transition={{
             repeat: Infinity,
