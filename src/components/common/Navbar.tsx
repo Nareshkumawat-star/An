@@ -49,12 +49,12 @@ export const Navbar = () => {
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [isScrolled, isVisible]);
+  }, [isScrolled, isVisible, pathname]);
 
   return (
     <nav
       className={`fixed top-4 left-0 right-0 z-50 transition-all duration-300 ease-out ${isScrolled ? "pt-0 px-4 sm:px-6 md:px-8" : "px-4 sm:px-6 md:px-8"
-        } ${isVisible ? "translate-y-0" : "-translate-y-full"}`}
+        } ${isVisible ? "translate-y-0 opacity-100" : "-translate-y-[calc(100%+4rem)] opacity-0 pointer-events-none"}`}
     >
       <div
         className={`floating-nav rounded-2xl px-5 sm:px-6 py-3.5 sm:py-3 bg-glass-bg transition-all duration-300 max-w-7xl mx-auto gpu-accelerated will-change-transform ${isScrolled ? "shadow-xl" : "shadow-lg"
