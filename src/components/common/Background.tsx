@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect } from "react";
 import { MeshGradient } from "@paper-design/shaders-react";
 import { motion, useSpring, useMotionValue, useMotionTemplate } from "motion/react";
 

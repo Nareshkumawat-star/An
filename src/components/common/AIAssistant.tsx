@@ -3,7 +3,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { useChat } from "@ai-sdk/react";
-import { Bot, X, Send, User, Sparkles, MessageCircle } from "lucide-react";
+import { Send, User, Bot, X, MessageCircle, Trash2 } from "lucide-react";
 import { Button } from "../ui/button";
 import { Card } from "../ui/card";
 import { cn } from "@/lib/utils";
@@ -11,7 +11,7 @@ import ReactMarkdown from "react-markdown";
 
 export const AIAssistant = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat({
+  const { messages, input, handleInputChange, handleSubmit, isLoading, append, setMessages } = useChat({
     api: "/api/chat",
   });
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -55,6 +55,23 @@ export const AIAssistant = () => {
           >
             <Card className="h-[450px] bg-[#0a0a0a] border border-zinc-800 flex flex-col overflow-hidden shadow-2xl ring-1 ring-white/5">
 
+              {/* Chat Header */}
+              <div className="flex items-center justify-between p-3 border-b border-zinc-800 bg-[#0d0d0d]">
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                  <span className="text-xs font-medium text-zinc-300">Naresh Assistant</span>
+                </div>
+                {messages.length > 0 && (
+                  <button
+                    onClick={() => setMessages([])}
+                    className="text-zinc-500 hover:text-zinc-300 transition-colors p-1"
+                    title="Clear chat"
+                  >
+                    <Trash2 className="w-4 h-4" />
+                  </button>
+                )}
+              </div>
+
               {/* Chat Content */}
               <div
                 ref={scrollRef}
@@ -77,7 +94,11 @@ export const AIAssistant = () => {
                           key={q}
                           type="button"
                           onClick={() => {
-                            handleInputChange({ target: { value: q } } as React.ChangeEvent<HTMLInputElement>);
+                            append({
+                              id: String(Date.now()),
+                              role: "user",
+                              content: q,
+                            });
                           }}
                           className="text-[9px] px-3 py-1.5 rounded bg-zinc-900 border border-zinc-800 hover:bg-primary/20 transition-all text-zinc-400 font-mono"
                         >

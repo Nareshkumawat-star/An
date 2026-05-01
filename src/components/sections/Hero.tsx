@@ -10,6 +10,9 @@ import { selfData } from "@/constant";
 import { quentine, mono } from "@/app/fonts";
 
 import { CodeTerminal, Magnetic } from "@/components/common";
+import DecryptedText from "@/components/bits/DecryptedText";
+import SplitText from "@/components/bits/SplitText";
+import ShinyText from "@/components/bits/ShinyText";
 
 export const Hero = () => {
   const ref = useRef(null);
@@ -42,7 +45,7 @@ export const Hero = () => {
                   ease: [0.25, 0.46, 0.45, 0.94],
                 }}
               >
-                {selfData.name}
+                <SplitText text={selfData.name} delay={50} />
               </motion.h1>
 
               <motion.p
@@ -52,7 +55,13 @@ export const Hero = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.4 }}
               >
-                {selfData.roles[0]}
+                <DecryptedText
+                  text={selfData.roles[0]}
+                  animateOn="view"
+                  revealDirection="center"
+                  speed={80}
+                  maxIterations={20}
+                />
               </motion.p>
 
               <motion.p
@@ -80,7 +89,7 @@ export const Hero = () => {
                 >
                   <Link href="/resume">
                     <span className="relative z-10 font-bold tracking-wide">
-                      View Resume
+                      <ShinyText text="View Resume" speed={3} className="text-white" />
                     </span>
                   </Link>
                 </Button>

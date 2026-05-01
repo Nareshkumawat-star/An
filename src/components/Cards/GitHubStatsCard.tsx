@@ -2,6 +2,7 @@
 
 import { motion } from "motion/react";
 import { Card } from "../ui/card";
+import Image from "next/image";
 import { selfData } from "@/constant";
 
 export const GitHubStatsCard = () => {
@@ -35,11 +36,13 @@ export const GitHubStatsCard = () => {
           <div className="flex-1 w-full">
             <h3 className="text-xl font-bold mb-4 font-nasalization text-primary">GitHub Ecosystem</h3>
             <div className="space-y-4">
-               <img 
+               <Image 
                 src={statsUrl} 
                 alt="GitHub Stats" 
                 className="w-full max-w-md h-auto"
-                loading="lazy"
+                width={500}
+                height={200}
+                unoptimized
               />
             </div>
           </div>
@@ -47,11 +50,13 @@ export const GitHubStatsCard = () => {
           <div className="flex-1 w-full">
             <h3 className="text-xl font-bold mb-4 font-nasalization text-secondary">Top Languages</h3>
             <div className="space-y-4">
-              <img 
+               <Image 
                 src={topLangsUrl} 
                 alt="Top Languages" 
                 className="w-full max-w-md h-auto"
-                loading="lazy"
+                width={500}
+                height={200}
+                unoptimized
               />
             </div>
           </div>

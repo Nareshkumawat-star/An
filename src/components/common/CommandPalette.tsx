@@ -3,7 +3,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { 
-  FaSearch, 
   FaUser, 
   FaCode, 
   FaBriefcase, 
@@ -14,12 +13,10 @@ import {
   FaTerminal
 } from "react-icons/fa";
 import { SiLeetcode } from "react-icons/si";
-import { useRouter } from "next/navigation";
 
 export const CommandPalette = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [search, setSearch] = useState("");
-  const router = useRouter();
 
   const actions = [
     { id: "about", icon: <FaUser />, title: "Go to About", category: "Navigation", action: () => scrollToSection("about") },

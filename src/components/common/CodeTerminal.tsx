@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { motion, useMotionValue, useTransform, useSpring } from "motion/react";
 
 const codeSnippet = `const developer = {
@@ -16,7 +16,6 @@ const codeSnippet = `const developer = {
 
 export const CodeTerminal = () => {
   const [displayedCode] = useState(codeSnippet);
-  const [index] = useState(codeSnippet.length);
 
   // 3D Tilt Logic
   const x = useMotionValue(0);
@@ -44,8 +43,6 @@ export const CodeTerminal = () => {
     x.set(0);
     y.set(0);
   };
-
-  // Typing effect removed for "immediate" display as requested
 
   // Simple Manual Syntax Highlighting
   const renderHighlightedCode = (code: string) => {
