@@ -6,6 +6,7 @@ import { motion, useSpring, useMotionValue } from "motion/react";
 export const CustomCursor = () => {
   const [isHovering, setIsHovering] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [isHiddenByElement, setIsHiddenByElement] = useState(false);
   
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -19,13 +20,21 @@ export const CustomCursor = () => {
     const style = document.createElement("style");
     style.innerHTML = `
       @media (min-width: 768px) {
-        * { cursor: none !important; }
+        body:not(:has(.use-default-cursor:hover)) * {
+          cursor: none !important;
+        }
       }
     `;
     document.head.appendChild(style);
 
     const handleMouseMove = (e: MouseEvent) => {
       if (!isVisible) setIsVisible(true);
+      
+      const target = e.target as HTMLElement;
+      if (target && typeof target.closest === 'function') {
+        setIsHiddenByElement(!!target.closest('.use-default-cursor'));
+      }
+
       mouseX.set(e.clientX);
       mouseY.set(e.clientY);
     };
@@ -55,7 +64,7 @@ export const CustomCursor = () => {
     };
   }, [mouseX, mouseY, isVisible]);
 
-  if (!isVisible) return null;
+  if (!isVisible || isHiddenByElement) return null;
 
   return (
     <motion.div

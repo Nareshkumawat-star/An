@@ -11,9 +11,26 @@ import ReactMarkdown from "react-markdown";
 
 export const AIAssistant = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { messages, input, handleInputChange, handleSubmit, isLoading, append, setMessages } = useChat({
-    api: "/api/chat",
-  });
+  const [input, setInput] = useState("");
+  
+  const { messages, sendMessage, status, setMessages } = useChat({});
+  
+  const isLoading = status === "streaming" || status === "submitted";
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInput(e.target.value);
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!input.trim()) return;
+    sendMessage({ role: "user", parts: [{ type: "text", text: input }] } as any);
+    setInput("");
+  };
+
+  const append = (msg: { id?: string, role: string, content: string }) => {
+    sendMessage({ role: msg.role, parts: [{ type: "text", text: msg.content }] } as any);
+  };
   const scrollRef = useRef<HTMLDivElement>(null);
   const constraintsRef = useRef(null);
   const [isMobile, setIsMobile] = useState(false);
@@ -49,7 +66,7 @@ export const AIAssistant = () => {
             exit={{ opacity: 0, y: 30, scale: 0.95 }}
             transition={{ type: "spring", stiffness: 400, damping: 30 }}
             className={cn(
-              "absolute pointer-events-auto",
+              "absolute pointer-events-auto use-default-cursor",
               isMobile ? "w-[calc(100vw-24px)]" : "w-[320px]"
             )}
           >
@@ -64,7 +81,7 @@ export const AIAssistant = () => {
                 {messages.length > 0 && (
                   <button
                     onClick={() => setMessages([])}
-                    className="text-zinc-500 hover:text-zinc-300 transition-colors p-1"
+                    className="text-zinc-500 hover:text-zinc-300 transition-colors p-1 cursor-pointer"
                     title="Clear chat"
                   >
                     <Trash2 className="w-4 h-4" />
@@ -100,7 +117,7 @@ export const AIAssistant = () => {
                               content: q,
                             });
                           }}
-                          className="text-[9px] px-3 py-1.5 rounded bg-zinc-900 border border-zinc-800 hover:bg-primary/20 transition-all text-zinc-400 font-mono"
+                          className="text-[9px] px-3 py-1.5 rounded bg-zinc-900 border border-zinc-800 hover:bg-primary/20 transition-all text-zinc-400 font-mono cursor-pointer"
                         >
                           {q}
                         </button>
@@ -129,7 +146,12 @@ export const AIAssistant = () => {
                         ? "bg-primary text-white rounded-tr-none"
                         : "bg-zinc-900 border border-zinc-800 rounded-tl-none text-zinc-200 prose prose-invert prose-p:my-0 prose-sm font-medium"
                     )}>
-                      <ReactMarkdown>{m.content}</ReactMarkdown>
+                      <ReactMarkdown>
+                        {m.parts ? m.parts.filter((p: any) => p.type === "text").map((p: any) => p.text).join("") : ""}
+                      </ReactMarkdown>
+                      {isLoading && m.role === "assistant" && messages[messages.length - 1].id === m.id && (
+                        <span className="inline-block w-1.5 h-3 ml-1 bg-primary animate-pulse align-middle" />
+                      )}
                     </div>
                   </div>
                 ))}
@@ -165,13 +187,13 @@ export const AIAssistant = () => {
                     value={input}
                     onChange={handleInputChange}
                     placeholder="Ask something..."
-                    className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3 py-2 text-[12px] focus:outline-none focus:ring-1 focus:ring-primary/50 transition-all placeholder:text-zinc-600 text-zinc-200 pr-10"
+                    className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3 py-2 text-[12px] focus:outline-none focus:ring-1 focus:ring-primary/50 transition-all placeholder:text-zinc-600 text-zinc-200 pr-10 cursor-text"
                   />
                   <Button
                     type="submit"
                     size="icon"
                     disabled={!input || isLoading}
-                    className="absolute right-1 h-7 w-7 rounded-md bg-primary hover:bg-primary/90 disabled:opacity-30"
+                    className="absolute right-1 h-7 w-7 rounded-md bg-primary hover:bg-primary/90 disabled:opacity-30 cursor-pointer"
                   >
                     <Send className="w-3.5 h-3.5 text-white" />
                   </Button>
@@ -189,7 +211,7 @@ export const AIAssistant = () => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           className={cn(
-            "w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center shadow-2xl transition-all duration-300 border border-primary/40",
+            "w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center shadow-2xl transition-all duration-300 border border-primary/40 cursor-pointer",
             isOpen
               ? "bg-primary text-white"
               : "bg-black text-primary"
