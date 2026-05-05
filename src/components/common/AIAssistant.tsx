@@ -12,11 +12,8 @@ import ReactMarkdown from "react-markdown";
 export const AIAssistant = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState("");
+  const { messages, status, setMessages, sendMessage } = useChat({});
   
-  const { messages, sendMessage, status, setMessages } = useChat({});
-  
-  const isLoading = status === "streaming" || status === "submitted";
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value);
   };
@@ -24,13 +21,17 @@ export const AIAssistant = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!input.trim()) return;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     sendMessage({ role: "user", parts: [{ type: "text", text: input }] } as any);
     setInput("");
   };
 
   const append = (msg: { id?: string, role: string, content: string }) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     sendMessage({ role: msg.role, parts: [{ type: "text", text: msg.content }] } as any);
   };
+  
+  const isLoading = status === "streaming" || status === "submitted";
   const scrollRef = useRef<HTMLDivElement>(null);
   const constraintsRef = useRef(null);
   const [isMobile, setIsMobile] = useState(false);
@@ -147,6 +148,7 @@ export const AIAssistant = () => {
                         : "bg-zinc-900 border border-zinc-800 rounded-tl-none text-zinc-200 prose prose-invert prose-p:my-0 prose-sm font-medium"
                     )}>
                       <ReactMarkdown>
+                        {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
                         {m.parts ? m.parts.filter((p: any) => p.type === "text").map((p: any) => p.text).join("") : ""}
                       </ReactMarkdown>
                       {isLoading && m.role === "assistant" && messages[messages.length - 1].id === m.id && (
