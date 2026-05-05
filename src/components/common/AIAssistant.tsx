@@ -8,6 +8,10 @@ import { Button } from "../ui/button";
 import { Card } from "../ui/card";
 import { cn } from "@/lib/utils";
 import ReactMarkdown from "react-markdown";
+import DecryptedText from "../bits/DecryptedText";
+import GradientText from "../bits/GradientText";
+import FallingText from "../bits/FallingText";
+import RotatingText from "../bits/RotatingText";
 
 export const AIAssistant = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -77,7 +81,7 @@ export const AIAssistant = () => {
               <div className="flex items-center justify-between p-3 border-b border-zinc-800 bg-[#0d0d0d]">
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                  <span className="text-xs font-medium text-zinc-300">Naresh Assistant</span>
+                  <GradientText className="text-xs font-bold tracking-wider" colors={["#10b981", "#3b82f6", "#10b981"]}>Naresh Assistant</GradientText>
                 </div>
                 {messages.length > 0 && (
                   <button
@@ -101,10 +105,26 @@ export const AIAssistant = () => {
                       <Bot className="w-6 h-6 text-primary" />
                     </div>
                     <div className="space-y-1">
-                      <h3 className="text-[12px] font-nasalization text-primary uppercase tracking-widest font-bold">Naresh Assistant</h3>
-                      <p className="text-[10px] text-zinc-500 italic px-4">
-                        How can I help you today?
-                      </p>
+                      <h3 className="text-[14px] font-nasalization text-primary uppercase tracking-widest font-bold">
+                        <FallingText text="Naresh Assistant" delay={40} />
+                      </h3>
+                      <div className="text-[11px] text-zinc-500 italic px-4 mt-2 flex items-center justify-center gap-1.5 h-6">
+                        <span>Ask me about</span>
+                        <GradientText colors={["#10b981", "#3b82f6"]} className="font-bold">
+                          <RotatingText 
+                            texts={["skills", "projects", "experience", "contact"]} 
+                            mainClassName="h-[14px] overflow-hidden justify-center"
+                            staggerFrom={"last"}
+                            initial={{ y: "100%" }}
+                            animate={{ y: 0 }}
+                            exit={{ y: "-120%" }}
+                            staggerDuration={0.025}
+                            splitLevelClassName="overflow-hidden pb-0.5"
+                            transition={{ type: "spring", damping: 30, stiffness: 400 }}
+                            rotationInterval={2000}
+                          />
+                        </GradientText>
+                      </div>
                     </div>
                     <div className="flex flex-wrap justify-center gap-1.5 pt-2">
                       {["Skills", "Projects", "Contact"].map((q) => (
@@ -120,7 +140,7 @@ export const AIAssistant = () => {
                           }}
                           className="text-[9px] px-3 py-1.5 rounded bg-zinc-900 border border-zinc-800 hover:bg-primary/20 transition-all text-zinc-400 font-mono cursor-pointer"
                         >
-                          {q}
+                          <DecryptedText text={q} animateOn="hover" />
                         </button>
                       ))}
                     </div>

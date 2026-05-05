@@ -10,9 +10,9 @@ import { selfData } from "@/constant";
 import { quentine, mono } from "@/app/fonts";
 
 import { CodeTerminal, Magnetic } from "@/components/common";
-import DecryptedText from "@/components/bits/DecryptedText";
 import SplitText from "@/components/bits/SplitText";
 import ShinyText from "@/components/bits/ShinyText";
+import RotatingText from "@/components/bits/RotatingText";
 
 export const Hero = () => {
   const ref = useRef(null);
@@ -55,12 +55,17 @@ export const Hero = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.4 }}
               >
-                <DecryptedText
-                  text={selfData.roles[0]}
-                  animateOn="view"
-                  revealDirection="center"
-                  speed={80}
-                  maxIterations={20}
+                <RotatingText 
+                  texts={selfData.roles}
+                  mainClassName="px-2 sm:px-2 md:px-3 bg-secondary/10 text-secondary overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
+                  staggerFrom={"last"}
+                  initial={{ y: "100%" }}
+                  animate={{ y: 0 }}
+                  exit={{ y: "-120%" }}
+                  staggerDuration={0.025}
+                  splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
+                  transition={{ type: "spring", damping: 30, stiffness: 400 }}
+                  rotationInterval={2500}
                 />
               </motion.p>
 
