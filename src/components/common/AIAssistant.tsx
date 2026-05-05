@@ -15,27 +15,7 @@ import RotatingText from "../bits/RotatingText";
 
 export const AIAssistant = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [input, setInput] = useState("");
-  const { messages, status, setMessages, sendMessage } = useChat({});
-  
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInput(e.target.value);
-  };
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (!input.trim()) return;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    sendMessage({ role: "user", parts: [{ type: "text", text: input }] } as any);
-    setInput("");
-  };
-
-  const append = (msg: { id?: string, role: string, content: string }) => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    sendMessage({ role: msg.role, parts: [{ type: "text", text: msg.content }] } as any);
-  };
-  
-  const isLoading = status === "streaming" || status === "submitted";
+  const { messages, input, handleInputChange, handleSubmit, append, setMessages, isLoading } = useChat({});
   const scrollRef = useRef<HTMLDivElement>(null);
   const constraintsRef = useRef(null);
   const [isMobile, setIsMobile] = useState(false);
@@ -111,8 +91,8 @@ export const AIAssistant = () => {
                       <div className="text-[11px] text-zinc-500 italic px-4 mt-2 flex items-center justify-center gap-1.5 h-6">
                         <span>Ask me about</span>
                         <GradientText colors={["#10b981", "#3b82f6"]} className="font-bold">
-                          <RotatingText 
-                            texts={["skills", "projects", "experience", "contact"]} 
+                          <RotatingText
+                            texts={["skills", "projects", "experience", "contact"]}
                             mainClassName="h-[14px] overflow-hidden justify-center"
                             staggerFrom={"last"}
                             initial={{ y: "100%" }}

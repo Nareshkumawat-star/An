@@ -124,6 +124,7 @@ export const metadata: Metadata = {
 
 
 import { AIAssistant, CommandPalette, CustomCursor, ScrollProgress } from "@/components/common";
+import TextCursor from "@/components/bits/TextCursor";
 
 export default function RootLayout({
   children,
@@ -144,6 +145,11 @@ export default function RootLayout({
 
         <ScrollProgress />
         <CustomCursor />
+        <TextCursor 
+          text="✨"
+          randomFloat={true}
+          maxPoints={8}
+        />
         <CommandPalette />
         <AIAssistant />
 
